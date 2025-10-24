@@ -8,6 +8,6 @@ router.post('/add', userController.addUser);
 // Delete user
 router.post('/delete', userController.deleteUsers);
 
-router.post('/list', userController.list);
+router.get('/list', userController.list);
 
 module.exports = router;
