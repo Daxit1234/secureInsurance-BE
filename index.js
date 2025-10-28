@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const cors = require('cors');  
 
 dotenv.config();
@@ -20,6 +21,7 @@ connectDB();
 
 // Mount user routes
 app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Test route
 app.get('/', (req, res) => res.send('Secure Insurance API is running 🚀'));

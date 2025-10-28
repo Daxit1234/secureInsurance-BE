@@ -7,6 +7,8 @@ const userSchema = new mongoose.Schema(
     dob: { type: Date },
     gender: { type: String },
     phoneNo: { type: Number },
+    insuranceType: { type: String },
+    members: { type: [String] },
     isDeleted: { type: Boolean, default: false },
   },
   { timestamps: true }

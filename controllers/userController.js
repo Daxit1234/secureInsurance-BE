@@ -47,6 +47,8 @@ class UserController {
             $or: [
               { name: { $regex: new RegExp(search, "i") } },
               { email: { $regex: new RegExp(search, "i") } },
+              { members: { $regex: new RegExp(search, "i") } },
+              { insuranceType: { $regex: new RegExp(search, "i") } },
             ],
           }
         : {}),
