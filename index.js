@@ -3,7 +3,9 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const systemRoutes = require('./routes/systemRoute');
 const cors = require('cors');  
+const fs = require('fs');
 
 dotenv.config();
 const app = express();
@@ -15,6 +17,8 @@ app.use(cors({
 }));
 // Middleware
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
+if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
 
 // Connect to MongoDB
 connectDB();
@@ -22,6 +26,7 @@ connectDB();
 // Mount user routes
 app.use('/api/users', userRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/system', systemRoutes);
 
 // Test route
 app.get('/', (req, res) => res.send('Secure Insurance API is running 🚀'));
