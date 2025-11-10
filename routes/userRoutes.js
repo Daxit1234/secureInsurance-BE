@@ -9,5 +9,6 @@ router.post('/add', userController.addUser);
 router.post('/delete', userController.deleteUsers);
 
 router.get('/list', userController.list);
+router.get('/searchAll', userController.searchAll);
 
 module.exports = router;
