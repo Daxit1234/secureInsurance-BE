@@ -17,8 +17,6 @@ app.use(cors({
 }));
 // Middleware
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
-if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
 
 // Connect to MongoDB
 connectDB();
