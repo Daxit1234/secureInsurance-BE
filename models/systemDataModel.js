@@ -14,6 +14,10 @@ const systemDataSchema = new mongoose.Schema(
     order: {
       type: Number,
     },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    }
   },
   { timestamps: true }
 );

@@ -19,7 +19,7 @@ const upload = multer({ storage });
 router.post("/add", upload.single("image"), systemController.add);
 router.put("/edit/:id", upload.single("image"), systemController.edit);
 router.get("/details/:id", systemController.details);
-router.delete("/delete/:id", systemController.delete);
+router.post("/delete", systemController.deleteSystemData);
 router.get("/list", systemController.list);
 
 module.exports = router;
