@@ -11,6 +11,19 @@ class UserController {
       res.status(400).json({ message: err.message });
     }
   };
+  // Edit user details
+  editUser = async (req, res) => {
+    try {
+      const id = req.params.id;
+      const user = await User.findById(id);
+      if (!user) return res.status(404).json({ message: "User not found" });
+      const updatedUser = { ...user, ...req.body };
+      await updatedUser.save();
+      res.status(200).json({ message: "User details updated successfully", user });
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  };
 
   // Delete multiple users by IDs
   deleteUsers = async (req, res) => {
@@ -81,8 +94,14 @@ class UserController {
     }
   };
   searchAll = async (req, res) => {
-    // ✅ Base filter
+    const { insuranceType } = req.query;
+
     const filter = { isDeleted: false };
+
+    if (insuranceType) {
+      filter.insuranceType = insuranceType;
+    }
+
     try {
       const data = await User.find(filter);
       res.status(200).json({

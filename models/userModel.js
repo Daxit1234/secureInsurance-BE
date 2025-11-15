@@ -9,6 +9,10 @@ const userSchema = new mongoose.Schema(
     phoneNo: { type: Number },
     insuranceType: { type: String },
     members: { type: [String] },
+    aadharNo: { type: Number },
+    panNo: { type: String },
+    vehicleNo: { type: String },
+    loanAmount: { type: Number },
     isDeleted: { type: Boolean, default: false },
   },
   { timestamps: true }

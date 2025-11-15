@@ -4,6 +4,7 @@ const userController = require('../controllers/userController');
 
 // Add new user
 router.post('/add', userController.addUser);
+router.put('/edit', userController.editUser);
 
 // Delete user
 router.post('/delete', userController.deleteUsers);
